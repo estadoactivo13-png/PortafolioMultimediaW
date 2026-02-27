@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrés Urrea | Senior Multimedia & Web Developer</title>
+    
+    <!-- Fuentes: Cinzel para un toque clásico/elegante y Montserrat para modernidad -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           1. PSICOLOGÍA DEL COLOR Y VARIABLES
+           ========================================= */
+        :root {
+            --deep-purple: #1a0033;      /* Sabiduría y Misterio */
+            --royal-purple: #2d0054;     /* Lujo y Creatividad */
+            --gold-accent: #c5a059;      /* Éxito y Prestigio */
+            --gold-bright: #e9d5a3;      /* Iluminación y Calidad */
+            --text-light: #f4f4f4;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--deep-purple);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Fondo dinámico sutil */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, var(--royal-purple) 0%, var(--deep-purple) 100%);
+            z-index: -1;
+        }
+
+        /* =========================================
+           2. NAVEGACIÓN (Sticky Header)
+           ========================================= */
+        header {
+            background: rgba(26, 0, 51, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gold-accent);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold-accent);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        /* =========================================
+           3. HERO SECTION (Encabezado con Foto)
+           ========================================= */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .profile-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--gold-accent);
+            padding: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.3);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-frame:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--royal-purple);
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            font-weight: 300;
+            color: var(--gold-bright);
+        }
+
+        /* =========================================
+           4. SECCIONES GENERALES
+           ========================================= */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold-accent);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold-accent);
+            margin: 15px auto;
+        }
+
+        /* Estilo de Tarjetas Profesionales */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--gold-accent);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card h3 {
+            color: var(--gold-accent);
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        /* =========================================
+           5. PORTAFOLIO Y ENLACES (Botones)
+           ========================================= */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .btn-project {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-project:hover {
+            background: var(--gold-accent);
+            color: var(--deep-purple);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* =========================================
+           6. SECCIÓN MULTIMEDIA (Video & Canva)
+           ========================================= */
+        .multimedia-section {
+            background: rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            border: 2px solid var(--gold-accent);
+            border-radius: 15px;
+            overflow: hidden;
+            display: none; /* Oculto inicialmente como se solicitó */
+        }
+
+        .video-container.visible {
+            display: block;
+        }
+
+        .canva-container {
+            width: 940px;
+            height: 788px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 100%;
+        }
+
+        .canva-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* =========================================
+           7. AUDIO CONTROL (Boton Flotante)
+           ========================================= */
+        #audio-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gold-accent);
+            color: var(--deep-purple);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2000;
+            display: none; /* Aparece después del primer clic */
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        /* =========================================
+           8. FOOTER & CONTACTO (Botón de Whatsapp Editado)
+           ========================================= */
+        footer {
+            background: #0a0014;
+            padding: 60px 10%;
+            text-align: center;
+            border-top: 1px solid var(--gold-accent);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            /* Cambio de color: Dorado Imperial con Degradado */
+            background: linear-gradient(135deg, var(--gold-accent) 0%, #8e6d2d 100%);
+            color: var(--deep-purple);
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--gold-bright);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.4rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.6);
+            background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-accent) 100%);
+        }
+
+        /* Animación sutil de pulso para el botón dorado */
+        @keyframes gold-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(197, 160, 89, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+        }
+
+        .whatsapp-btn {
+            animation: gold-pulse 2s infinite;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 60px 5%; }
+            .canva-container { height: 500px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body onclick="initExperience()">
+
+    <!-- Audio de Fondo (Oculto) -->
+    <audio id="bg-music" loop>
+        <source src="musica-fondo.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón de Control de Audio -->
+    <button id="audio-control" onclick="toggleAudio(event)">
+        <i class="fas fa-pause" id="audio-icon"></i>
+    </button>
+
+    <header>
+        <a href="#" class="logo">AU.DEVELOPER</a>
+        <nav class="nav-links">
+            <a href="#perfil">Perfil</a>
+            <a href="#experiencia">Experiencia</a>
+            <a href="#portafolio">Proyectos</a>
+            <a href="#formacion">Formación</a>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN HERO -->
+    <section class="hero">
+        <div class="profile-frame">
+            <img src="foto.jpg" alt="Andrés Urrea - Desarrollador Multimedia">
+        </div>
+        <h1>Andrés Urrea</h1>
+        <p>Arquitecto de Experiencias Digitales | Desarrollador Multimedia & Web</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">Fusión de Psicología, Tecnología y Arte Visual</p>
+    </section>
+
+    <!-- SECCIÓN PERFIL (MARKETING PSICOLÓGICO) -->
+    <section id="perfil">
+        <h2 class="section-title">Visión Estratégica</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Psicología Aplicada al UX</h3>
+                <p>No solo construyo sitios; diseño comportamientos. Mi formación como psicólogo me permite crear interfaces que conectan emocionalmente con el usuario y optimizan la retención.</p>
+            </div>
+            <div class="card">
+                <h3>Narrativa Multimedia</h3>
+                <p>Especialista en convertir conceptos complejos en contenido visual impactante, desde plataformas educativas hasta campañas de alto impacto político.</p>
+            </div>
+            <div class="card">
+                <h3>Desarrollo Full-Vision</h3>
+                <p>Dominio de herramientas modernas (HTML, CSS, JS) aplicadas a la resolución de problemas reales y gestión de comunidades digitales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EXPERIENCIA ADAPTADA -->
+    <section id="experiencia" style="background: rgba(255,255,255,0.02);">
+        <h2 class="section-title">Trayectoria Profesional</h2>
+        <div class="grid-container">
+            <!-- Corporación Axios -->
+            <div class="card">
+                <span style="color: var(--gold-accent); font-size: 0.8rem;">EDUCACIÓN VIRTUAL</span>
+                <h3>Corp. Axios</h3>
+                <p>Líder de desarrollo en plataformas educativas virtuales. Diseño y despliegue de cursos interactivos orientados al aprendizaje autónomo y gestión de materiales multimedia.</p>
+            </div>
+            <!-- My Family -->
+            <div class="card">
+                <span style="color: var(--gold-accent); font-size: 0.8rem;">WEB & DATOS</span>
+                <h3>Corp. My Family</h3>
+                <p>Arquitectura web integral y administración de bases de datos. Gestión de contenidos y mentoría técnica a estudiantes del SENA en su etapa práctica.</p>
+            </div>
+            <!-- Semillas de Paz -->
+            <div class="card">
+                <span style="color: var(--gold-accent); font-size: 0.8rem;">IMPACTO SOCIAL</span>
+                <h3>Semillas de Paz</h3>
+                <p>Desarrollo de ecosistema digital y producción de material audiovisual para la sensibilización social. Supervisión de proyectos técnicos de pasantes.</p>
+            </div>
+            <!-- Consultoría Política -->
+            <div class="card">
+                <span style="color: var(--gold-accent); font-size: 0.8rem;">ESTRATEGIA POLÍTICA</span>
+                <h3>Campañas Electorales</h3>
+                <p>Consultor multimedia para campañas en La Araucanía (Pablo Becker, Ricardo Pizarro). Creación de identidad digital y estrategias de comunicación en redes.</p>
+            </div>
+            <!-- Gestión Artística -->
+            <div class="card">
+                <h3>Manejo de Plataformas</h3>
+                <p>Dirección técnica de canales de YouTube y presencia digital para artistas como Bastian Ly y Luna Ternura, potenciando su alcance orgánico.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PORTAFOLIO (BOTONES DINÁMICOS) -->
+    <section id="portafolio">
+        <h2 class="section-title">Portafolio de Proyectos</h2>
+        <div class="portfolio-grid">
+            <a href="https://Corporacionmyfamily.onrender.com" target="_blank" class="btn-project">
+                <i class="fas fa-users"></i> Corp. My Family
+            </a>
+            <a href="https://www.admintegralbogota.com/inicio" target="_blank" class="btn-project">
+                <i class="fas fa-building"></i> Admintegral Bogotá
+            </a>
+            <a href="https://semillasdepaz.netlify.app/" target="_blank" class="btn-project">
+                <i class="fas fa-seedling"></i> Semillas de Paz
+            </a>
+            <a href="https://www.youtube.com/@BastianLyMusic" target="_blank" class="btn-project">
+                <i class="fab fa-youtube"></i> Bastian Ly (Music)
+            </a>
+            <a href="https://www.youtube.com/@lunaTernurabb" target="_blank" class="btn-project">
+                <i class="fas fa-star"></i> Luna (Infantil)
+            </a>
+            <a href="https://www.youtube.com/@psicologiaholistica9" target="_blank" class="btn-project">
+                <i class="fas fa-brain"></i> Psicología Holística
+            </a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN MULTIMEDIA & CANVA -->
+    <section class="multimedia-section">
+        <h2 class="section-title">Visual Showcase</h2>
+        
+        <!-- Contenedor de Video (Oculto por defecto, se activa por JS si se desea) -->
+        <div class="video-container" id="main-video">
+            <video width="100%" controls>
+                <source src="video-presentacion.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+        </div>
+
+        <!-- Incrustación Canva -->
+        <div class="canva-container">
+            <iframe loading="lazy" src="https://www.canva.com/design/DAHCid5PjmE/hkoCEejfIEpn8_FUh_gVjA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- FORMACIÓN Y SKILLS -->
+    <section id="formacion">
+        <h2 class="section-title">Cursos & Certificaciones</h2>
+        <div class="grid-container">
+            <div class="card">
+                <ul style="list-style: none; padding:0;">
+                    <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> Tecnólogo en Desarrollo Multimedia y Web (2025)</li>
+                    <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> Diplomado en Pedagogía en Educación Superior</li>
+                    <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> Máster en Psicología Transpersonal</li>
+                    <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> Especialista en UX Writing & SEO Estratégico</li>
+                    <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> Gestión de Bases de Datos NoSQL y Relacionales</li>
+                    <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> Producción Avanzada de Video para E-learning</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2 style="font-family: 'Cinzel', serif; color: var(--gold-accent);">Andrés Urrea</h2>
+        <p>Psicólogo | Desarrollador Multimedia | Creador de Contenido</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-gray);">Temuco, Chile | Global Remote</p>
+        
+        <a href="https://wa.me/56930763222" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+        </a>
+
+        <div style="margin-top: 40px; font-size: 0.7rem; opacity: 0.5;">
+            &copy; 2026 Diseñado con psicología y código por Andrés Urrea.
+        </div>
+    </footer>
+
+    <script>
+        let experienceStarted = false;
+        const audio = document.getElementById('bg-music');
+        const audioBtn = document.getElementById('audio-control');
+        const audioIcon = document.getElementById('audio-icon');
+
+        // Función para iniciar la experiencia (música y mostrar controles)
+        function initExperience() {
+            if (!experienceStarted) {
+                audio.volume = 0.3; // Volumen suave
+                audio.play().catch(e => console.log("Audio waiting for interaction"));
+                
+                audioBtn.style.display = 'flex';
+                experienceStarted = true;
+
+                // Opcional: Mostrar video al iniciar interacción
+                // document.getElementById('main-video').classList.add('visible');
+            }
+        }
+
+        // Función para pausar/reproducir
+        function toggleAudio(event) {
+            event.stopPropagation(); // Evita que el clic del botón dispare initExperience de nuevo
+            if (audio.paused) {
+                audio.play();
+                audioIcon.className = 'fas fa-pause';
+                audioBtn.style.background = 'var(--gold-accent)';
+            } else {
+                audio.pause();
+                audioIcon.className = 'fas fa-play';
+                audioBtn.style.background = 'rgba(197, 160, 89, 0.5)';
+            }
+        }
+    </script>
+</body>
+</html>
